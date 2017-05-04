@@ -10,26 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503061108) do
+ActiveRecord::Schema.define(version: 20170504191421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 128, default: "",    null: false
+    t.string   "encrypted_password",     limit: 64,  default: "",    null: false
+    t.string   "reset_password_token",   limit: 64
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.string   "confirmation_token",     limit: 64
+    t.datetime "confirmation_at"
+    t.datetime "confirmation_sent_at"
+    t.integer  "failed_attempts"
+    t.string   "unlock_token",           limit: 64
+    t.datetime "locked_at"
+    t.string   "user_name",              limit: 64,  default: "",    null: false
+    t.string   "nick_name",              limit: 64,  default: "",    null: false
+    t.string   "family_name",            limit: 64
+    t.string   "given_name",             limit: 64
+    t.string   "phone_number",           limit: 64
+    t.string   "image_file_name",        limit: 128
+    t.string   "image_file_url",         limit: 512
+    t.string   "company_name",           limit: 64,  default: "",    null: false
+    t.string   "education",              limit: 256, default: "",    null: false
+    t.integer  "age",                    limit: 2,   default: 0
+    t.integer  "gender",                 limit: 2,   default: 0
+    t.integer  "residential_area",       limit: 2,   default: 0
+    t.string   "user_comment",           limit: 512
+    t.integer  "user_type",              limit: 2,   default: 0
+    t.boolean  "visible",                            default: true
+    t.boolean  "deleted",                            default: false
+    t.datetime "deleted_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
 end
