@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20170506103157) do
     t.string   "confirmation_token",     limit: 64
     t.datetime "confirmation_at"
     t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 128
     t.integer  "failed_attempts"
     t.string   "unlock_token",           limit: 64
     t.datetime "locked_at"

@@ -3,6 +3,7 @@ class AddToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :confirmation_token, :string, limit: 64, before: :created_at
     add_column :users, :confirmation_at, :datetime, before: :created_at
     add_column :users, :confirmation_sent_at, :datetime, before: :created_at
+    add_column :users, :unconfirmed_email, :string, limit: 128, before: :created_at
     add_column :users, :failed_attempts, :integer, before: :created_at
     add_column :users, :unlock_token, :string, limit: 64, before: :created_at
     add_column :users, :locked_at, :datetime, before: :created_at

@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :create, only: [:complete]
 
   # GET /resource/sign_up
   def new
@@ -9,7 +10,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    if params[:back]
+      render :action => 'new'
+    else
+      super
+    end
   end
 
   # GET /resource/edit
@@ -34,6 +39,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # removing all OAuth session data.
   def cancel
     super
+  end
+  
+  def confirm
+    @user = User.new(sign_up_params)
+    if @user.valid?
+      render :action => 'confirm'
+    else
+      render :action => 'new'
+    end
+  end
+  
+  def complete
+    render :action => 'complete'
   end
 
   protected
