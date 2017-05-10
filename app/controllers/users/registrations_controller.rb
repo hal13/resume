@@ -1,7 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  before_action :create, only: [:complete]
 
   # GET /resource/sign_up
   def new
@@ -10,11 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if params[:back]
-      render :action => 'new'
-    else
-      super
-    end
+    super
   end
 
   # GET /resource/edit
@@ -41,19 +36,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
   
-  def confirm
-    @user = User.new(sign_up_params)
-    if @user.valid?
-      render :action => 'confirm'
-    else
-      render :action => 'new'
-    end
-  end
-  
-  def complete
-    render :action => 'complete'
-  end
-
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -68,7 +50,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    super(resource)
+    edit_user_registration_path
   end
 
   # The path used after sign up for inactive accounts.
