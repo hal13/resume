@@ -1,0 +1,6 @@
+<div class="nested-fields">
+    <%= f.hidden_field :id %>
+    <%= f.collection_select(:skill_id, Skill.all, :id, :skill_set) %>
+    
+    <%= link_to_remove_association "削除", f %>
+</div>
