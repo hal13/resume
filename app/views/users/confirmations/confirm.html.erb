@@ -1,0 +1,130 @@
+<h2>利用者情報を登録する</h2>
+
+<div class="form-group">
+  <!--<%#= form_for(resource, as: resource_name, url: confirmation_path(resource_name)) do |f| %>-->
+  <%= form_for @user, url: { action: 'confirm' } do |f| %>
+    <%= f.hidden_field :confirmation_token %>
+    <%= f.hidden_field :confirmed_at, value: Time.zone.now %>
+
+    <table class="table">
+      <tr>
+        <th><%= f.label :password %></th>
+        <td>
+          <%= f.hidden_field :password %>
+          <%#= @user.password %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :password_confirmation %></th>
+        <td>
+          <%= f.hidden_field :password_confirmation %>
+          <%#= @user.password_confirmation %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :user_name %></th>
+        <td>
+          <%= f.hidden_field :user_name %>
+          <%= @user.user_name.to_s %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :nick_name %></th>
+        <td>
+          <%= f.hidden_field :nick_name %>
+          <%= @user.nick_name %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :family_name %></th>
+        <td>
+          <%= f.hidden_field :family_name %>
+          <%= @user.family_name %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :given_name %></th>
+        <td>
+          <%= f.hidden_field :given_name %>
+          <%= @user.given_name %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :phone_number %></th>
+        <td>
+          <%= f.hidden_field :phone_number %>
+          <%= @user.phone_number %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :company_name %></th>
+        <td>
+          <%= f.hidden_field :company_name %>
+          <%= @user.company_name %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :education %></th>
+        <td>
+          <%= f.hidden_field :education %>
+          <%= @user.education %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :age %></th>
+        <td>
+          <%= f.hidden_field :age %>
+          <%= @user.age %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :gender %></th>
+        <td>
+          <%= f.hidden_field :gender %>
+          <%= @user.gender %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :residential_area %></th>
+        <td>
+          <%= f.hidden_field :residential_area %>
+          <%= @user.residential_area %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :user_comment %></th>
+        <td>
+          <%= f.hidden_field :user_comment %>
+          <%= @user.user_comment %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :user_type %></th>
+        <td>
+          <%= f.hidden_field :user_type %>
+          <%= @user.user_type %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :visible %></th>
+        <td>
+          <%= f.hidden_field :visible %>
+          <%= @user.visible %>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td>
+        </td>
+      </tr>
+    </table>
+      
+    <%= f.submit t 'helpers.submit.back', name: "back" %>
+    <%= f.submit t 'helpers.submit.create', name: "save" %>
+    
+  <% end %>
+</div>
+
+<div class="links">
+  <%= render "users/shared/links" %>
+</div>

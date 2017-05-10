@@ -1,0 +1,15 @@
+<h1>レジュメ情報登録</h1>
+<%= form_for [:user_admin, @user_resume] do |f| %>
+    <div class="field">
+        <label>スキル情報</label>
+        <%= f.fields_for :user_skills do |skill_form| %>
+            <%= render 'user_skill_fields', f: skill_form %>
+        <% end %>
+        <div id="links">
+            <%= link_to_add_association "追加", f, :user_skills %><br />
+        </div>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>

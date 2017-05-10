@@ -1,0 +1,87 @@
+<h2>利用者情報を登録する</h2>
+
+<div class="form-group">
+  <!--<%#= form_for(resource, as: resource_name, url: confirmation_path(resource_name)) do |f| %>-->
+  <%= form_for @user, url: { action: 'confirm' } do |f| %>
+    <%= f.hidden_field :confirmation_token %>
+    <%= f.hidden_field :confirmed_at, value: Time.zone.now %>
+    <%= devise_error_messages! %>
+  
+    <table class="table">
+      <tr>
+        <th><%= f.label :password %><span class="text-danger", style="color:red;"> * </span><br />
+        <!--<em><%#= @minimum_password_length %> 文字以上</em>-->
+        </th>
+        <td><%= f.password_field :password, autocomplete: "off" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :password_confirmation %><span class="text-danger", style="color:red;"> * </span></th>
+        <td><%= f.password_field :password_confirmation, autocomplete: "off" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :user_name %><span class="text-danger", style="color:red;"> * </span></th>
+        <td><%= f.text_field :user_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :nick_name %><span class="text-danger", style="color:red;"> * </span></th>
+        <td><%= f.text_field :nick_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :family_name %></th>
+        <td><%= f.text_field :family_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :given_name %></th>
+        <td><%= f.text_field :given_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :phone_number %></th>
+        <td><%= f.text_field :phone_number %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :company_name %><span class="text-danger", style="color:red;"> * </span></th>
+        <td><%= f.text_field :company_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :education %><span class="text-danger", style="color:red;"> * </span></th>
+        <td><%= f.text_field :education %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :age %></th>
+        <td><%= f.select :age, User.ages_i18n.invert %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :gender %></th>
+        <td><%= f.select :gender, User.genders_i18n.invert %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :residential_area %></th>
+        <td><%= f.collection_select :residential_area, JpPrefecture::Prefecture.all, :name, :name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :user_comment %></th>
+        <td><%= f.text_area :user_comment %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :user_type %></th>
+        <td>
+          <%= f.radio_button :user_type, User.types_i18n[:engineer], checked: true %>エンジニア<br />
+          <%= f.radio_button :user_type, User.types_i18n[:non_engineer] %>エンジニア以外
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :visible %></th>
+        <td>
+          <%= f.radio_button :visible, User.resume_visibles_i18n[:on], checked: true %>公開<br />
+          <%= f.radio_button :visible, User.resume_visibles_i18n[:off] %>非公開
+        </td>
+      </tr>
+    </table>
+    <%= f.submit t 'helpers.submit.confirm' %>
+      
+  <% end %>
+</div>
+
+<div class="links">
+  <%= render "users/shared/links" %>
+</div>
