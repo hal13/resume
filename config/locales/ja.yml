@@ -145,6 +145,8 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+      confirm: 確認する
+      back: 戻る
   number:
     currency:
       format:
@@ -203,3 +205,22 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
+  enums:
+    user:
+      age:
+        teens: 10代
+        twenties: 20代
+        thirties: 30代
+        forties: 40代
+        fifties: 50代
+        sixties: 60代
+        unknown: 不詳
+      gender:
+        male: 男性
+        female: 女性
+      type:
+        engineer: エンジニア
+        non_engineer: エンジニア以外
+      resume_visible:
+        on: 公開
+        off: 非公開

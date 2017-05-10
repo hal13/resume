@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506103157) do
+ActiveRecord::Schema.define(version: 20170508104339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20170506103157) do
   end
 
   create_table "user_careers", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "career_from",     limit: 6,                null: false
     t.string   "career_to",       limit: 6,                null: false
     t.integer  "career_position", limit: 2,   default: 0,  null: false
@@ -46,45 +45,53 @@ ActiveRecord::Schema.define(version: 20170506103157) do
     t.string   "career_comment",  limit: 512, default: ""
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-    t.index ["user_id"], name: "index_user_careers_on_user_id", using: :btree
+    t.integer  "user_resume_id"
+    t.index ["user_resume_id"], name: "index_user_careers_on_user_resume_id", using: :btree
   end
 
   create_table "user_certificates", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "certified_at",          limit: 6,   null: false
     t.string   "certification_name",    limit: 128, null: false
     t.string   "certification_version", limit: 64
     t.string   "certification_rank",    limit: 64
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.index ["user_id"], name: "index_user_certificates_on_user_id", using: :btree
+    t.integer  "user_resume_id"
+    t.index ["user_resume_id"], name: "index_user_certificates_on_user_resume_id", using: :btree
   end
 
   create_table "user_competencies", force: :cascade do |t|
+    t.integer  "question_id",    limit: 2,  null: false
+    t.integer  "answer_id",      limit: 2
+    t.string   "answer_text",    limit: 64
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "user_resume_id"
+    t.index ["user_resume_id"], name: "index_user_competencies_on_user_resume_id", using: :btree
+  end
+
+  create_table "user_resumes", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "question_id", limit: 2,  null: false
-    t.integer  "answer_id",   limit: 2
-    t.string   "answer_text", limit: 64
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.index ["user_id"], name: "index_user_competencies_on_user_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_resumes_on_user_id", using: :btree
   end
 
   create_table "user_searches", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "column_for_search", limit: 2048, default: ""
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
-    t.index ["user_id"], name: "index_user_searches_on_user_id", using: :btree
+    t.integer  "user_resume_id"
+    t.index ["user_resume_id"], name: "index_user_searches_on_user_resume_id", using: :btree
   end
 
   create_table "user_skills", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "skill_id",    limit: 2, default: 0, null: false
-    t.integer  "skill_level", limit: 2
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.index ["user_id"], name: "index_user_skills_on_user_id", using: :btree
+    t.integer  "skill_id",       limit: 2, default: 0, null: false
+    t.integer  "skill_level",    limit: 2
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "user_resume_id"
+    t.index ["user_resume_id"], name: "index_user_skills_on_user_resume_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,7 +108,7 @@ ActiveRecord::Schema.define(version: 20170506103157) do
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.string   "confirmation_token",     limit: 64
-    t.datetime "confirmation_at"
+    t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email",      limit: 128
     t.integer  "failed_attempts"
@@ -131,8 +138,10 @@ ActiveRecord::Schema.define(version: 20170506103157) do
   end
 
   add_foreign_key "questions", "answers", name: "answer_type"
-  add_foreign_key "user_careers", "users"
-  add_foreign_key "user_certificates", "users"
-  add_foreign_key "user_competencies", "users"
-  add_foreign_key "user_searches", "users"
+  add_foreign_key "user_careers", "user_resumes"
+  add_foreign_key "user_certificates", "user_resumes"
+  add_foreign_key "user_competencies", "user_resumes"
+  add_foreign_key "user_resumes", "users"
+  add_foreign_key "user_searches", "user_resumes"
+  add_foreign_key "user_skills", "user_resumes"
 end

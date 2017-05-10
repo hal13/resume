@@ -8,12 +8,14 @@ Rails.application.routes.draw do
   }
   
   devise_scope :user do 
-    post 'users/sign_up/confirm' => 'users/registrations#confirm'
-    post 'users/sign_up/complete' => 'users/registrations#complete'
+    patch "users/confirmation", to: "users/confirmations#confirm"
+    get "users/confirmation/complete", to: "users/confirmations#complete"
   end
   
   namespace :user_admin do
     get '/' => 'homes#index'
+    resources :user_resumes, except: [:index, :destroy], param: :user_id
+    patch "user_resumes/:user_id", to: "user_resumes#confirm"
   end
 
   root 'home#index'
