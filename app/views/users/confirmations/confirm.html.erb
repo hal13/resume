@@ -74,21 +74,21 @@
         <th><%= f.label :age %></th>
         <td>
           <%= f.hidden_field :age %>
-          <%= @user.age %>
+          <%= @user.age_i18n %>
         </td>
       </tr>
       <tr>
         <th><%= f.label :gender %></th>
         <td>
           <%= f.hidden_field :gender %>
-          <%= @user.gender %>
+          <%= @user.gender_i18n %>
         </td>
       </tr>
       <tr>
         <th><%= f.label :residential_area %></th>
         <td>
           <%= f.hidden_field :residential_area %>
-          <%= @user.residential_area %>
+          <%= @user.prefecture.name %>
         </td>
       </tr>
       <tr>
@@ -102,14 +102,14 @@
         <th><%= f.label :user_type %></th>
         <td>
           <%= f.hidden_field :user_type %>
-          <%= @user.user_type %>
+          <%= @user.user_type_i18n %>
         </td>
       </tr>
       <tr>
         <th><%= f.label :visible %></th>
         <td>
           <%= f.hidden_field :visible %>
-          <%= @user.visible %>
+          <%= @user.visible_i18n %>
         </td>
       </tr>
       <tr>
