@@ -48,15 +48,27 @@
       </tr>
       <tr>
         <th><%= f.label :age %></th>
-        <td><%= f.select :age, User.ages_i18n.invert %></td>
+        <!--<td><%#= f.select :age, User.ages_i18n.invert %></td>-->
+        <td>
+          <% User.ages_i18n.invert.each do |key, value| %>
+            <%= f.radio_button :age, value %>
+            <%= f.label key %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th><%= f.label :gender %></th>
-        <td><%= f.select :gender, User.genders_i18n.invert %></td>
+        <!--<td><%#= f.select :gender, User.genders_i18n.invert %></td>-->
+        <td>
+          <% User.genders_i18n.invert.each do |key, value| %>
+            <%= f.radio_button :gender, value %>
+            <%= f.label key %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th><%= f.label :residential_area %></th>
-        <td><%= f.collection_select :residential_area, JpPrefecture::Prefecture.all, :name, :name %></td>
+        <td><%= f.collection_select :residential_area, JpPrefecture::Prefecture.all, :code, :name %></td>
       </tr>
       <tr>
         <th><%= f.label :user_comment %></th>
@@ -65,15 +77,19 @@
       <tr>
         <th><%= f.label :user_type %></th>
         <td>
-          <%= f.radio_button :user_type, User.types_i18n[:engineer], checked: true %>エンジニア<br />
-          <%= f.radio_button :user_type, User.types_i18n[:non_engineer] %>エンジニア以外
+          <% User.user_types_i18n.invert.each do |key, value| %>
+            <%= f.radio_button :user_type, value %>
+            <%= f.label key %><br />
+          <% end %>
         </td>
       </tr>
       <tr>
         <th><%= f.label :visible %></th>
         <td>
-          <%= f.radio_button :visible, User.resume_visibles_i18n[:on], checked: true %>公開<br />
-          <%= f.radio_button :visible, User.resume_visibles_i18n[:off] %>非公開
+          <% User.visibles_i18n.invert.each do |key, value| %>
+            <%= f.radio_button :visible, value %>
+            <%= f.label key %><br />
+          <% end %>
         </td>
       </tr>
     </table>
