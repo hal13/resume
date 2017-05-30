@@ -50,10 +50,13 @@ class User < ApplicationRecord
          
   has_one :user_resume, dependent: :destroy
   
-  enum age: { teens: 1, twenties: 2, thirties: 3, forties: 4, fifties: 5, sixties: 6, unknown: 0 }
+  include JpPrefecture
+  jp_prefecture :residential_area
+  
+  enum age: { unknown: 0, teens: 1, twenties: 2, thirties: 3, forties: 4, fifties: 5, sixties: 6 }
   enum gender: { male: 0, female: 1 }
-  enum type: { engineer: 0, non_engineer: 1 }
-  enum resume_visible: { on: true, off: false }
+  enum user_type: { engineer: 0, non_engineer: 1 }
+  enum visible: { show: true, not_show: false }
 
   def password_required?
     super if confirmed?
