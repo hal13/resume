@@ -15,6 +15,5 @@ class UserSkill < ApplicationRecord
 
 	belongs_to :user_resume
 	
-    enum skill_level: { LEVEL1: 1, LEVEL2: 2, LEVEL3: 3, LEVEL4: 4, LEVEL5: 5}
-    # enum skill_level: [ :LEVEL1, :LEVEL2, :LEVEL3, :LEVEL4, :LEVEL5 ]
+    enum skill_level: { LEVEL1: 0, LEVEL2: 1, LEVEL3: 2, LEVEL4: 3, LEVEL5: 4}
 end
