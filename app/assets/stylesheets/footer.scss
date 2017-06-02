@@ -1,0 +1,13 @@
+.footer-nav {
+  display: table;
+  text-align: center;
+  width: 100%;
+  background: #0073b1;
+	position: fixed;
+  bottom: 0px;
+  padding: 5px 0 5px 0;  
+  &__menu {
+  	display: table-cell;
+  	vertical-align: middle;  	
+  }
+}

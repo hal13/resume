@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Resume</title>
-    <%= csrf_meta_tags %>
+  <html lang="ja">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>あなたにマッチした企業からスカウトされるオンラインレジュメサイト</title>
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+      <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= stylesheet_link_tag    'homes', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+    </head>
 
-  <body>
-    <%= yield %>
-  </body>
+    <body>
+      <div class="allwrap">
+        <header>
+          <div class="logo">
+            <h1>
+              <img src="https://lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="レジュメサービスロゴ">
+            </h1>
+          </div>
+        </header>
+        <main>
+          <%= yield %>
+        </main>
+        <footer>
+          <p>フッター内容</p>
+        </footer>
+      </div><!-- end of all wrap -->
+    </body>
 </html>
