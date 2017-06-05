@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   
   devise_scope :user do 
     patch "users/confirmation", to: "users/confirmations#confirm"
+    get "users/thanks", to: "users/registrations#thanks"
     get "users/confirmation/complete", to: "users/confirmations#complete"
   end
   

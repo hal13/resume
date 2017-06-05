@@ -1,2 +1,6 @@
-<h1>Home#index</h1>
 <%= render('sign_up') %>
+
+<% @user_type = User.all.group(:user_type).count.map { |k, v| [User.user_types.key(k), v] } %>
+
+<p>サービスの登録者状況</p>
+<%= bar_chart @user_type %>

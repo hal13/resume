@@ -46,7 +46,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable
+          :confirmable, :lockable
          
   has_one :user_resume, dependent: :destroy
   
@@ -55,10 +55,41 @@ class User < ApplicationRecord
   
   enum age: { unknown: 0, teens: 1, twenties: 2, thirties: 3, forties: 4, fifties: 5, sixties: 6 }
   enum gender: { male: 0, female: 1 }
-  enum user_type: { engineer: 0, non_engineer: 1 }
+  enum user_type: { engineer: 0, recruiter: 1 }
   enum visible: { show: true, not_show: false }
 
+  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@aiit.ac.jp/i
+  validates :email, 
+            length: { maximum: 128 }, 
+            format: { with: VALID_EMAIL_REGEX, message: "はエンジニアの場合、AIITのメールアドレスのみ利用可能です。" }, if: :is_engineer?
+  
+  with_options if: :confirmed? do |confirm|
+    confirm.validates :user_name,
+              presence: true,
+              length: { maximum: 64 }
+    confirm.validates :nick_name,
+              presence: true,
+              length: { maximum: 64 }
+    confirm.validates :family_name,
+              length: { maximum: 64 }
+    confirm.validates :given_name,
+              length: { maximum: 64 }
+    confirm.validates :phone_number,
+              length: { maximum: 64 }
+    confirm.validates :company_name,
+              presence: true,
+              length: { maximum: 64 }
+    confirm.validates :education,
+              presence: true,
+              length: { maximum: 256 }
+  end
+            
   def password_required?
     super if confirmed?
+  end
+  
+  def is_engineer?
+    user_type == "engineer"
   end
 end
