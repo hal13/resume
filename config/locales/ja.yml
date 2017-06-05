@@ -7,6 +7,23 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      user: 利用者情報
+    attributes:
+      user:
+        email: eメール
+        password: パスワード
+        password_confirmation: パスワード(確認)
+        user_name: ユーザ名
+        nick_name: ニックネーム
+        family_name: 姓
+        given_name: 名
+        phone_number: 電話番号
+        company_name: 会社名
+        education: 最終学歴
+        age: 年代
+        gender: 性別
+        residential_area: 居住地域
   date:
     abbr_day_names:
     - 日
@@ -146,6 +163,7 @@ ja:
       submit: 保存する
       update: 更新する
       confirm: 確認する
+      send: 送信
       back: 戻る
   number:
     currency:
@@ -205,10 +223,11 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
+# Enums
   enums:
     user:
       age:
-        unknown: 不詳
+        unknown: 非公開
         teens: 10代
         twenties: 20代
         thirties: 30代
@@ -220,7 +239,42 @@ ja:
         female: 女性
       user_type:
         engineer: エンジニア
-        non_engineer: エンジニア以外
+        recruiter: リクルーター
       visible:
         show: 公開する
         not_show: 公開しない
+# Views
+  users:
+    confirmations:
+      show:
+        password: パスワード
+        password_confirmation: パスワード(確認)
+        user_name: ユーザ名
+        nick_name: ニックネーム
+        family_name: 姓
+        given_name: 名
+        phone_number: 電話番号
+        company_name: 会社名
+        education: 最終学歴
+        age: 年代
+        gender: 性別
+        residential_area: 居住地域
+        user_comment: コメント
+        user_type: 属性
+        visible: 登録情報公開有無
+      confirm:
+        password: パスワード
+        password_confirmation: パスワード(確認)
+        user_name: ユーザ名
+        nick_name: ニックネーム
+        family_name: 姓
+        given_name: 名
+        phone_number: 電話番号
+        company_name: 会社名
+        education: 最終学歴
+        age: 年代
+        gender: 性別
+        residential_area: 居住地域
+        user_comment: コメント
+        user_type: 属性
+        visible: 登録情報公開有無

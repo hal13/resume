@@ -1,0 +1,54 @@
+header {
+	height: 50px;
+	background: #232f3e;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	.header-contents {
+		.logo {
+			display: inline-block;
+			img {
+				height: 50px;
+				margin-left: 15px;
+			}
+		}
+
+		.search-box {
+			margin-bottom: 10px;
+			float: right;
+			input {
+				width: 320px;
+				height: 30px;
+				margin: 7px;
+				font-size: 15px;
+			}
+		}
+
+		@media screen and (max-width: 340px) {
+			.search-box {
+				margin-bottom: 10px;
+				float: right;
+				input {
+					width: 235px;
+					height: 30px;
+					margin: 7px;
+					font-size: 15px;
+				}
+			}
+		}
+
+		@media screen and (min-width: 341px) and ( max-width: 375px) {
+			.search-box {
+				margin-bottom: 10px;
+				float: right;
+				input {
+					width: 275px;
+					height: 30px;
+					margin: 7px;
+					font-size: 15px;
+				}
+			}
+		}
+
+	}
+}

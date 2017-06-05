@@ -1,10 +1,14 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'new_registration'}) do |f| %>
+<!--<%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>-->
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <!--<%#= f.label :email %><br />-->
-    <p>新規会員登録はこちら</p><br />
-    <%= f.email_field :email, autofocus: true, placeholder: :email %>
-    <%= f.submit t 'helpers.submit.create', class: "actions" %>
+  <p>新規会員登録はこちら</p>
+  <%= f.email_field :email, autofocus: true, placeholder: :email, class: "new_registration__email" %>
+  <div class="new_registration__user_type">
+    <% User.user_types_i18n.invert.each do |key, value| %>
+      <%= f.radio_button :user_type, value, class: "radio-input", id: "user_#{key}" %>
+      <%= f.label key %>
+    <% end %>
   </div>
+  <%= f.submit "送信", class: "new_registration__button" %>
 <% end %>
