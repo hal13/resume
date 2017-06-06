@@ -4,6 +4,9 @@ educations = [ "MIT", "Stanford", "Harvard", "Tokyo"]
 1.upto(100) do |n|
   User.create!(
     email: "example_#{n}@aiit.ac.jp",
+1.upto(1000) do |n|
+  User.create!(
+    email: "example_#{n}@gmail.com",
     password: "resume_test",
     sign_in_count: 0,
     confirmed_at: DateTime.now,
