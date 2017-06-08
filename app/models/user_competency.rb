@@ -13,4 +13,11 @@
 
 class UserCompetency < ApplicationRecord
 	belongs_to :user_resume
+
+	
+	validates :question_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
+	validates :answer_id, allow_nil: true, numericality: { only_integer: true, greater_than: 0 }
+	validates :answer_text, allow_nil: true, length: { maximum: 64 }
+
 end
+

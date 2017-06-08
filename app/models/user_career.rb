@@ -23,4 +23,13 @@ class UserCareer < ApplicationRecord
 	# def self.getPosition ( position )
 	# 	return @@position_name{position.to_i}
 	# end
+
+
+	validates :career_from, presence: true, length: { is: 6 } 
+	validates :career_to, presence: true, length: { is: 6 } 
+	validates :career_desc, presence: true, length: { within: 1..512 } 
+	validates :career_position, presence: true, numericality: { only_integer: true, greater_than_or_equal: 0, less_than: 8 }
+	validates :career_desc, length: { maximum: 512 } 
+
 end
+
