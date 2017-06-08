@@ -15,5 +15,11 @@ class UserSkill < ApplicationRecord
 
 	belongs_to :user_resume
 	
-    enum skill_level: { LEVEL1: 0, LEVEL2: 1, LEVEL3: 2, LEVEL4: 3, LEVEL5: 4}
+	enum skill_level: { LEVEL1: 0, LEVEL2: 1, LEVEL3: 2, LEVEL4: 3, LEVEL5: 4}
+
+	
+	validates :skill_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
+	validates :skill_level, allow_nil: true, numericality: { only_integer: true, greater_than: 0, less_than: 5 }
+
 end
+
