@@ -14,4 +14,12 @@
 
 class UserCertificate < ApplicationRecord
 	belongs_to :user_resume
+
+	
+	validates :certified_at, presence: true, length: { is: 6 }
+	validates :certification_name, presence: true, length: { within: 1..128 }
+	validates :certification_version, length: { maximum: 64 }
+	validates :certification_rank, length: { maximum: 64 }
+
 end
+
