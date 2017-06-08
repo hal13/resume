@@ -16,19 +16,19 @@ ActiveRecord::Schema.define(version: 20170508104339) do
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.integer  "answer_type", limit: 2,  null: false
+    t.integer  "question_id",            null: false
     t.integer  "type_id",     limit: 2,  null: false
     t.string   "answer_desc", limit: 64, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.index ["question_id", "type_id"], name: "index_answers_on_question_id_and_type_id", unique: true, using: :btree
+    t.index ["question_id"], name: "index_answers_on_question_id", using: :btree
   end
 
   create_table "questions", force: :cascade do |t|
     t.string   "question_desc", limit: 128, null: false
-    t.integer  "answer_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.index ["answer_id"], name: "index_questions_on_answer_id", using: :btree
   end
 
   create_table "skills", force: :cascade do |t|
@@ -137,7 +137,6 @@ ActiveRecord::Schema.define(version: 20170508104339) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
-  add_foreign_key "questions", "answers", name: "answer_type"
   add_foreign_key "user_careers", "user_resumes"
   add_foreign_key "user_certificates", "user_resumes"
   add_foreign_key "user_competencies", "user_resumes"
