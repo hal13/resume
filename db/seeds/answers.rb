@@ -19,7 +19,7 @@ answers = {
 
 answers.each do |key, hash|
   hash.each do |k, v|
-    Answer.create(
+    Answer.create!(
       question_id: key,
       type_id: k,
       answer_desc: v

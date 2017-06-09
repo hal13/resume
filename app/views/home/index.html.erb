@@ -1,6 +1,7 @@
+<%= render('sign_in') %>
 <%= render('sign_up') %>
 
-<% @user_type = User.where.not(confirmed_at: nil).group(:user_type).count.map { |k, v| [User.user_types.key(k), v] } %>
+<% @user_age = User.where.not(confirmed_at: nil).group(:age).order(:age).count.map { |k, v| [User.ages_i18n.values[k], v] } %>
 
 <p>サービスの登録者状況</p>
-<%= bar_chart @user_type %>
+<%= bar_chart @user_age %>

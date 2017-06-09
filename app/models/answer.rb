@@ -11,5 +11,5 @@
 #
 
 class Answer < ApplicationRecord
-	belongs_to :question, foreign_key: "answer_type"
+	belongs_to :question
 end
