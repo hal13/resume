@@ -9,10 +9,10 @@ educations = [ "MIT", "Stanford", "Harvard", "Tokyo"]
     confirmed_at: DateTime.now,
     user_name: "hal#{n}",
     nick_name: "hal#{n}",
-    company_name: companies[rand(companies.length)],
-    education: educations[rand(educations.length)],
-    gender: rand(0..1),
-    age: rand(0..6),
-    user_type: rand(0..1)
+    company_name: companies.sample,
+    education: educations.sample,
+    gender: User.genders.values.sample,
+    age: User.ages.values.sample,
+    user_type: User.user_types.values.sample
     )
 end
