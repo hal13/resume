@@ -93,8 +93,8 @@ Rails.application.configure do
     :address => "smtp.gmail.com",
     :port => 587,
     :domain => ENV['RESUME_MAILER_DOMAIN']
-    # :authentication => :plain,
-    :authentication => :login,
+    # :authentication => :login,
+    :authentication => :plain,
     :user_name => ENV['RESUME_MAILER_SENDER'],
     :password => ENV['RESUME_MAILER_PASSWORD']
   }
