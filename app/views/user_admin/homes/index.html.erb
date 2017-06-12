@@ -1,3 +1,25 @@
 <h1>ログインしました</h1>
 
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<h1>レジュメ情報表示</h1>
+<table>
+<tr><th>user_id:</th><td><h2><%= @user_resume.user_id %> </h2></td></tr>
+
+<tr><th>certified_at:</th><td><h2><%= @user_certificates.certified_at %> </h2></td></tr>
+<tr><th>certification_name:</th><td><h2><%= @user_certificates.certification_name %> </h2></td></tr>
+<tr><th>certification_version:</th><td><h2><%= @user_certificates.certification_version %> </h2></td></tr>
+<tr><th>certification_rank:</th><td><h2><%= @user_certificates.certification_rank %> </h2></td></tr>
+
+<tr><th>question_id:</th><td><h2><%= @user_competencies.question_id %> </h2></td></tr>
+<tr><th>answer_id:</th><td><h2><%= @user_competencies.answer_id %> </h2></td></tr>
+<tr><th>answer_text:</th><td><h2><%= @user_competencies.answer_text %> </h2></td></tr>
+
+<tr><th>career_from:</th><td><h2><%= @user_careers.career_from %> </h2></td></tr>
+<tr><th>career_to:</th><td><h2><%= @user_careers.career_to %> </h2></td></tr>
+<tr><th>career_position:</th><td><h2><%= @user_careers.career_position %> </h2></td></tr>
+<tr><th>career_desc:</th><td><h2><%= @user_careers.career_desc %> </h2></td></tr>
+<tr>career_comment:</th><h2><%= @user_careers.career_comment %> </h2></td></tr>
+
+<tr><th>skill_id:</th><td><h2><%= @user_skills.skill_id %> </h2></td></tr>
+<tr><th>skill_level:</th><td><h2><%= @user_skills.skill_level %> </h2></td></tr>
+</table>
