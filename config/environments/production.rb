@@ -85,6 +85,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+
   # for Heroku.
   config.action_mailer.default_url_options = { host: "https://#{ENV['RESUME_MAILER_HOST']}/" }
   config.action_mailer.delivery_method = :smtp
@@ -92,7 +93,8 @@ Rails.application.configure do
     :enable_strarttls_auto => true,
     :address => "smtp.gmail.com",
     :port => 587,
-    :domain => ENV['RESUME_MAILER_DOMAIN']
+    :domain => ENV['RESUME_MAILER_DOMAIN'],
+    # the authentication parameter for SMTPAuth
     # :authentication => :login,
     :authentication => :plain,
     :user_name => ENV['RESUME_MAILER_SENDER'],
