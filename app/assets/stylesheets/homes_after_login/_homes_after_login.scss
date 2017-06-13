@@ -1,0 +1,85 @@
+body {
+	background: #f5f5f5;
+}
+
+main {
+	width: 90%;
+	margin: 75px auto;
+}
+
+.basic-profile {
+	background: white;
+	width: 100%;
+	margin-top: 30px;
+	&__image {
+		text-align: center;
+		img {
+			margin: 10px 0 20px 0;
+			border-radius: 5px;
+		}
+	}
+	&__info {
+		text-align: center;
+		&__name {
+			margin-bottom: 10px;
+			border: solid 2px #d6c588;
+			border-radius: 5px;
+			padding:10px;
+		}
+		&__job-title {
+			margin-bottom: 10px;
+			border: solid 2px #d6c588;
+			border-radius: 5px;
+			padding:10px;
+		}
+		&__education {
+			margin-bottom: 10px;
+			border: solid 2px #d6c588;
+			border-radius: 5px;
+			padding:10px;
+		}
+		&__summary {
+			margin-bottom: 10px;
+			border: solid 2px #d6c588;
+			border-radius: 5px;
+			text-align: left;
+			padding: 0 10px 10px 10px;
+		}
+	}
+}
+
+.history-profile{
+	background: white;
+	width: 100%;
+	margin-top: 30px;
+	&__image {
+		text-align: center;
+		img {
+			margin: 10px 0 20px 0;
+			border-radius: 5px;
+		}
+	}
+	&__info {
+		text-align: center;
+		&__year {
+			margin-bottom: 10px;
+			border: solid 2px #6b8e23;
+			border-radius: 5px;
+			text-align: left;
+			padding:10px;
+		}
+		&__job-title {
+			margin-bottom: 10px;
+			border: solid 2px #6b8e23;
+			border-radius: 5px;
+			padding:10px;
+		}
+		&__summary {
+			margin-bottom: 10px;
+			border: solid 2px #6b8e23;
+			border-radius: 5px;
+			text-align: left;
+			padding: 0 10px 10px 10px;
+		}
+	}
+}

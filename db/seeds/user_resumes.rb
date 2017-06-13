@@ -38,7 +38,7 @@ user_count = User.count
     user.user_resume.user_careers.create!(
       career_from: st_date_str,
       career_to: en_date_str,
-      career_position: UserCareer.positions.values.sample,
+      career_position: UserCareer.career_positions.values.sample,
       career_desc: ["物流システム開発", "業務システム開発", "ECサイトリニューアルプロジェクト", "商品開発"].sample,
       career_comment: ["とにかく頑張りました。", "ひたすら頑張りました。", "死んじゃいそうでした。", "死ぬ寸前でした。"].sample
       )

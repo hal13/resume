@@ -16,7 +16,7 @@
 class UserCareer < ApplicationRecord
 	belongs_to :user_resume
 	
-	enum position: { None: 0, OP: 1, PG: 2, SE: 3, SA: 4, SC: 5, PL: 6, PM: 7 }
+	enum career_position: { None: 0, OP: 1, PG: 2, SE: 3, SA: 4, SC: 5, PL: 6, PM: 7 }
 
 	# @@position_name = { 1=>"OP",2=>"PG",3=>"SE",4=>"SA",5=>"SC",6=>"PL",7="PM",0="N/A" }
 
@@ -28,7 +28,8 @@ class UserCareer < ApplicationRecord
 	validates :career_from, presence: true, length: { is: 6 } 
 	validates :career_to, presence: true, length: { is: 6 } 
 	validates :career_desc, presence: true, length: { within: 1..512 } 
-	validates :career_position, presence: true, numericality: { only_integer: true, greater_than_or_equal: 0, less_than: 8 }
+	# validates :career_position, presence: true, numericality: { only_integer: true, greater_than_or_equal: 0, less_than: 8 }
+	validates :career_position, presence: true, numericality: { only_integer: true, greater_than_or_equal: 0 }
 	validates :career_desc, length: { maximum: 512 } 
 
 end
