@@ -3,5 +3,15 @@
 
 <% @user_age = User.where.not(confirmed_at: nil).group(:age).order(:age).count.map { |k, v| [User.ages_i18n.values[k], v] } %>
 
-<p>サービスの登録者状況</p>
-<%= bar_chart @user_age %>
+<% @user_gender = User.where.not(confirmed_at: nil).group(:gender).order(:gender).count.map { |k, v| [User.genders_i18n.values[k], v] } %>
+
+
+<hr>
+<p><b>サービスの登録者状況</b></p>
+<h6><u>年代別</u></h6>
+<%= bar_chart @user_age, colors: ["green", "#999#"] %>
+<br>
+<h6><u>性別</u></h6>
+<%= pie_chart @user_gender %>
+<hr>
+
