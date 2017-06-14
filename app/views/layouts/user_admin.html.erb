@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+  <html lang="ja">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>あなたにマッチした企業からスカウトされるオンラインレジュメサイト</title>
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+      <%= csrf_meta_tags %>
+
+      <%= stylesheet_link_tag    'homes_after_login', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+
+		<body>
+			<div class="allwrap">
+				<header>
+				<div class="header-contents">
+					<div class="logo">
+						<h1>
+							<img src="https://lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="レジュメサービスロゴ">
+						</h1>
+					</div>
+					<div class="search-box">
+						<input type="text" name="keywords" placeholder="skills, people, companies...">
+					</div>
+				</div>
+				</header>
+				<main>
+				  <%= yield %>
+				</main>
+				<footer>
+					<nav>
+						<ul class="footer-nav">
+							<li class="footer-nav__menu">
+								<%= link_to image_tag( "home.png", alt: "ホーム"), user_admin_path %>
+							</li>
+							<li class="footer-nav__menu">
+								<%= image_tag "message.png", alt: "メッセージ" %>
+							</li>
+							<li class="footer-nav__menu">
+								<%= image_tag "resume.png", alt: "レジュメ" %>
+							</li>
+						</ul>
+					</nav>
+				</footer>
+			</div><!-- end of all wrap -->
+		</body>
+</html>
