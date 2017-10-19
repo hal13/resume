@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 #
 use Net::GitHub;
+use Data::Dumper;
 
 $user = 'chubachi-pt-2017';
 $repo = 'resume';
@@ -30,6 +31,6 @@ $line = @pulls;
 print "Count of PullRequests:\t$line\n\n";
 foreach $pull ( @pulls ) {
 	chomp($pull);
-	print $pull . "\n";
+	print Dumper $pull;
 }
 
